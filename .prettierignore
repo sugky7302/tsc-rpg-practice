@@ -1,5 +1,6 @@
 # IDE/Editor
 .vscode
+.devcontainer
 
 # Package Manager
 package.json
@@ -7,3 +8,6 @@ pnpm-lock.json
 
 # build
 build/
+node_modules/
+.pnpm-store/
+
