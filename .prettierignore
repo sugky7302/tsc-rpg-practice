@@ -1,0 +1,9 @@
+# IDE/Editor
+.vscode
+
+# Package Manager
+package.json
+pnpm-lock.json
+
+# build
+build/
