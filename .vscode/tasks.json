@@ -1,0 +1,15 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "start:watch",
+			"type": "shell",
+            "command": "pnpm start:watch"
+		},
+		{
+			"type": "shell",
+            "label": "start:run",
+            "command": "pnpm start:run",
+		}
+	]
+}

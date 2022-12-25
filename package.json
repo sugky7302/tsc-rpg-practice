@@ -2,7 +2,7 @@
 	"scripts": {
 		"start:watch": "tsc -w",
 		"start:run": "nodemon build/index.js",
-		"start": "concurrently pnpm:start",
+		"start": "concurrently pnpm start",
 		"prepare": "husky install"
 	},
 	"devDependencies": {
