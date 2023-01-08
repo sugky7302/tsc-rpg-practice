@@ -1,2 +1,2 @@
-import { test } from './test/equip';
+import { test } from './test/weapon-factory';
 test();

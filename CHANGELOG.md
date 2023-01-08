@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.3.0 - 2023-01-08
+### Added:
+- 新增 `armors/` 存放防具。
+- 新增 `equipments/` 存放裝備抽象類別，包含 Armor、Weapon。
+
 ## 0.2.0 - 2022-12-25
 ### Added:
 - 新增 `character/` 存放角色。

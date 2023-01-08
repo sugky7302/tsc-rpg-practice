@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.test = void 0;
-const stabattack_1 = require("../ability/stabattack");
 const swordsman_1 = require("../character/swordsman");
 const warlock_1 = require("../character/warlock");
 function test() {
@@ -11,7 +10,7 @@ function test() {
     swordsman.attack(warlock);
     console.log('Warlock attacking the swordsman: ');
     warlock.attack(swordsman);
-    swordsman.switchAttackStrategy(new stabattack_1.StabAttack());
+    // swordsman.switchAttackStrategy(new StabAttack());
     console.log('Using StabAttack:');
     swordsman.attack(warlock);
 }

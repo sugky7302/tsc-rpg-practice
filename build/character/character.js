@@ -1,45 +1,48 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BountyHunter = exports.Monster = exports.Character = void 0;
+const armor_1 = require("../armors/armor");
+const basicarmor_1 = require("../armors/basicarmor");
+const basicrobe_1 = require("../armors/basicrobe");
 const role_1 = require("../role/role");
 const basic_sword_1 = require("../weapons/basic-sword");
 const basic_wand_1 = require("../weapons/basic-wand");
+const weapon_1 = require("../weapons/weapon");
 class Character {
     name;
     role;
     weaponRef;
-    // 在裝備武器的同時被初始化
-    attackRef;
-    constructor(name, role, weaponRef) {
+    armorRef;
+    constructor(name, role, weaponRef, armorRef) {
         this.name = name;
         this.role = role;
         this.weaponRef = weaponRef;
-        this.attackRef = this.weaponRef.attackStrategy;
+        this.armorRef = armorRef;
     }
     introduce() {
         console.log(`Hi, I'm ${this.name} the ${this.role}`);
     }
     attack(target) {
-        this.attackRef.attack(this, target);
-    }
-    // 替換攻擊策略
-    switchAttackStrategy(type) {
-        this.attackRef = type;
+        this.weaponRef.attack(this, target);
     }
     /**
      * 角色裝備武器
      * 會檢查角色是否符合武器規定
-     * @param {Weapon} weapon - 武器
+     * @param {Equipment} equipment - 武器
      */
-    equip(weapon) {
-        const { availableRoles: roles } = weapon;
+    equip(equipment) {
+        const { availableRoles: roles } = equipment;
         if (roles.length === 0 || roles.includes(this.role)) {
-            console.log(`${this.name} has equipped "${weapon.name}"!`);
-            this.weaponRef = weapon;
-            this.attackRef = this.weaponRef.attackStrategy;
+            console.log(`${this.name} has equipped "${equipment.name}"!`);
+            if (equipment instanceof weapon_1.Weapon) {
+                this.weaponRef = equipment;
+            }
+            else if (equipment instanceof armor_1.Armor) {
+                this.armorRef = equipment;
+            }
         }
         else {
-            throw new Error(`${this.role} cannot equip ${weapon.name}!`);
+            throw new Error(`${this.role} cannot equip ${equipment.name}!`);
         }
     }
 }
@@ -47,7 +50,7 @@ exports.Character = Character;
 class Monster extends Character {
     name;
     constructor(name) {
-        super(name, role_1.Role.Monster, new basic_sword_1.BasicSword());
+        super(name, role_1.Role.Monster, new basic_sword_1.BasicSword(), new basicarmor_1.BasicArmor());
         this.name = name;
     }
 }
@@ -56,7 +59,7 @@ class BountyHunter extends Character {
     // 賞金獵人會抓取人質或怪物，所以這裡會是用陣列型別
     hostages = [];
     constructor(name) {
-        super(name, role_1.Role.BountyHunter, new basic_wand_1.BasicWand());
+        super(name, role_1.Role.BountyHunter, new basic_wand_1.BasicWand(), new basicrobe_1.BasicRobe());
     }
     /**
      * 捕捉敵人

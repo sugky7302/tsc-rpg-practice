@@ -12,7 +12,7 @@ export function test() {
     console.log('Warlock attacking the swordsman: ');
     warlock.attack(swordsman);
 
-    swordsman.switchAttackStrategy(new StabAttack());
+    // swordsman.switchAttackStrategy(new StabAttack());
     console.log('Using StabAttack:');
     swordsman.attack(warlock);
 }

@@ -1,4 +1,4 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const equip_1 = require("./test/equip");
-(0, equip_1.test)();
+const weapon_factory_1 = require("./test/weapon-factory");
+(0, weapon_factory_1.test)();

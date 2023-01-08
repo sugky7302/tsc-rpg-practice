@@ -1,55 +1,53 @@
-import IAttack from '../ability/attack';
+import { Armor } from '../armors/armor';
+import { BasicArmor } from '../armors/basicarmor';
+import { BasicRobe } from '../armors/basicrobe';
+import { Equipment } from '../equipments/equipment';
 import { Role } from '../role/role';
 import { BasicSword } from '../weapons/basic-sword';
 import { BasicWand } from '../weapons/basic-wand';
 import { Weapon } from '../weapons/weapon';
 
 export class Character {
-    // 在裝備武器的同時被初始化
-    private attackRef: IAttack;
-
     constructor(
         public readonly name: string,
         public readonly role: Role,
-        private weaponRef: Weapon
-    ) {
-        this.attackRef = this.weaponRef.attackStrategy;
-    }
+        private weaponRef: Weapon,
+        private armorRef: Armor
+    ) {}
 
     public introduce() {
         console.log(`Hi, I'm ${this.name} the ${this.role}`);
     }
 
     public attack(target: Character): void {
-        this.attackRef.attack(this, target);
-    }
-
-    // 替換攻擊策略
-    public switchAttackStrategy(type: IAttack) {
-        this.attackRef = type;
+        this.weaponRef.attack(this, target);
     }
 
     /**
      * 角色裝備武器
      * 會檢查角色是否符合武器規定
-     * @param {Weapon} weapon - 武器
+     * @param {Equipment} equipment - 武器
      */
-    public equip(weapon: Weapon) {
-        const { availableRoles: roles } = weapon;
+    public equip(equipment: Equipment) {
+        const { availableRoles: roles } = equipment;
 
         if (roles.length === 0 || roles.includes(this.role)) {
-            console.log(`${this.name} has equipped "${weapon.name}"!`);
-            this.weaponRef = weapon;
-            this.attackRef = this.weaponRef.attackStrategy;
+            console.log(`${this.name} has equipped "${equipment.name}"!`);
+
+            if (equipment instanceof Weapon) {
+                this.weaponRef = equipment;
+            } else if (equipment instanceof Armor) {
+                this.armorRef = equipment;
+            }
         } else {
-            throw new Error(`${this.role} cannot equip ${weapon.name}!`);
+            throw new Error(`${this.role} cannot equip ${equipment.name}!`);
         }
     }
 }
 
 export class Monster extends Character {
     constructor(public name: string) {
-        super(name, Role.Monster, new BasicSword());
+        super(name, Role.Monster, new BasicSword(), new BasicArmor());
     }
 }
 
@@ -58,7 +56,7 @@ export class BountyHunter extends Character {
     public hostages: Character[] = [];
 
     constructor(name: string) {
-        super(name, Role.BountyHunter, new BasicWand());
+        super(name, Role.BountyHunter, new BasicWand(), new BasicRobe());
     }
 
     /**
