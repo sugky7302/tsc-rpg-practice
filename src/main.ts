@@ -1,1 +1,2 @@
-console.log('test');
+import { test } from './test/role';
+test();
