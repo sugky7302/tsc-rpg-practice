@@ -1,5 +1,5 @@
 import { Role, RoleTemplate } from '../role/role';
-import { assert } from '../shared/assert';
+import { Assert } from '../shared/assert';
 
 class RoleTest {
     // 測試列舉
@@ -13,10 +13,7 @@ class RoleTest {
         console.log(roleTemplate.role);
         console.log(roleTemplate.knowledges);
         console.log(roleTemplate.skills);
-        assert(
-            roleTemplate.match({ roles: [Role.Mage, Role.Knight, Role.Warlock] }),
-            'RoleTemplate.match()'
-        );
+        Assert.isTrue(roleTemplate.match({ roles: [Role.Mage, Role.Knight, Role.Warlock] }));
     }
 }
 
