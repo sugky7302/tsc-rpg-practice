@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## Unreleased.4 - 2023-02-23
+- 改成 jest 測試框架，只要是命名為 **.spec.ts** 的檔案就是測試檔。
+
 ## 0.2.0.3 - 2023-01-26
 - 新增 Role 測試。
 - 設計 RoleTemplate 類別，處理職業模板。

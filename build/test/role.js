@@ -14,7 +14,7 @@ class RoleTest {
         console.log(roleTemplate.role);
         console.log(roleTemplate.knowledges);
         console.log(roleTemplate.skills);
-        (0, assert_1.assert)(roleTemplate.match({ roles: [role_1.Role.Mage, role_1.Role.Knight, role_1.Role.Warlock] }), 'RoleTemplate.match()');
+        assert_1.Assert.isTrue(roleTemplate.match({ roles: [role_1.Role.Mage, role_1.Role.Knight, role_1.Role.Warlock] }));
     }
 }
 function test() {
