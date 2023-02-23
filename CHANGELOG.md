@@ -1,7 +1,10 @@
 # CHANGELOG
 
-## Unreleased.4 - 2023-02-23
+## Unreleased.5 - 2023-02-23
 - 改成 jest 測試框架，只要是命名為 **.spec.ts** 的檔案就是測試檔。
+
+### Added:
+- 新增 `behavior-tree/`，並通過簡單的行為樹測試。
 
 ## 0.2.0.3 - 2023-01-26
 - 新增 Role 測試。
