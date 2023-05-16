@@ -1,0 +1,8 @@
+# Docker 相關檔案
+docker-compose.yml
+Dockerfile
+.dockerignore
+
+# Git 相關
+.gitignore
+.git/

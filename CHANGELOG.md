@@ -1,6 +1,9 @@
 # CHANGELOG
 
-## Unreleased.5 - 2023-02-23
+## Unreleased.6 - 2023-05-16
+- 封裝成 Docker 容器，並使用 docker-compose 驅動。
+
+## 0.3.0.5 - 2023-02-23
 - 改成 jest 測試框架，只要是命名為 **.spec.ts** 的檔案就是測試檔。
 
 ### Added:

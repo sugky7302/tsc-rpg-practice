@@ -4,5 +4,5 @@
  *
  */
 export class Character {
-    private _property: Attribute;
+    // private _property: Attribute;
 }
