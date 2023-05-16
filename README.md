@@ -19,16 +19,19 @@
 ## 安裝
 
 1. 下載此專案。
-2. 利用 VS Code 加載 .devcontainer，創建 Docker 環境。
-3. 安裝 `pnpm`。
+2. 安裝 docker-compose。
+    - 如果是 Windows 或 Mac，請直接去下載 [Docker Desktop For Windows](https://www.docker.com/products/docker-desktop/)，裡面有包含 Docker 和 docker-compose。
+    - 如果是 Linux，請先按照[此頁面](https://docs.docker.com/engine/install/ubuntu/)安裝 Docker，然後再執行以下指令：
 
 ```
-npm i -g pnpm
-```
+sudo curl -L "https://github.com/docker/compose/releases/download/v2.18.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
-4. 安裝依賴套件。
+sudo chmod +x /usr/local/bin/docker-compose
+```
+3. 接著進入到資料夾，直接用 docker-compose 構建 Docker 容器：
 
 ```
-cd /workspaces/tsc-rpg-practice
-pnpm i
+cd /path/to/file/tsc-rpg-practice
+docker-compose up -d --build
 ```
+4. 進入容器，開始開發！
