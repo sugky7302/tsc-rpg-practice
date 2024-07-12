@@ -1,0 +1,91 @@
+name: "war3"
+
+x-timezone:
+  TZ: &zone Asia/Taipei
+  TZ_OFFSET: &tz_offset 28800  # 8*60*60
+
+x-gin:
+  GIN_MODE: &gin_mode release
+  GIN_PORT: &gin_port 3003
+  GIN_THREAD: &gin_thread 4
+
+x-postgres-dsn: &pg_dsn
+  POSTGRES_IP: &pg_ip 172.28.0.5
+  POSTGRES_PORT: &pg_port 5432
+  POSTGRES_DB: &pg_db postgres
+  POSTGRES_USER: &pg_account postgres
+  POSTGRES_PASSWORD: &pg_pwd admin
+
+services:
+  database:
+    container_name: war3.db
+    build:
+      context: ./database
+      dockerfile: Dockerfile.run
+    restart: always
+    init: true
+    networks:
+      war3-net:
+        ipv4_address: 172.210.0.2
+    ports:
+      - published: 13789
+        target: *pg_port
+        protocol: tcp
+    environment:
+      <<: *pg_dsn
+      TZ: *zone
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    container_name: war3.api
+    build:
+      context: ./api
+      target: dev
+    init: true
+    restart: always
+    depends_on:
+      - database
+    networks:
+      war3-net:
+        ipv4_address: 172.210.0.3
+    ports:
+      - published: 13800
+        target: *gin_port
+        protocol: tcp
+    environment:
+      <<: *pg_dsn
+      GIN_MODE: *gin_mode
+      GIN_PORT: *gin_port
+      GIN_THREAD: *gin_thread
+      TZ: *zone
+    volumes:
+      - ./api:/app
+
+  web:
+    container_name: war3.web
+    build:
+      context: ./web
+      target: dev
+    depends_on:
+      - api
+    init: true
+    networks:
+      war3-net:
+        ipv4_address: 172.210.0.4
+    volumes:
+      - ./web/src:/app/src
+      - ./web/public:/app/public
+      - ./web/.vscode:/app/.vscode
+
+volumes:
+  postgres_data:
+
+networks:
+  war3-net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.210.0.0/16
+          gateway: 172.210.0.1

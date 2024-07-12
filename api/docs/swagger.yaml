@@ -1,0 +1,105 @@
+basePath: /
+definitions:
+  api_model.ChatUsage:
+    properties:
+      completion_tokens:
+        type: integer
+      prompt_tokens:
+        type: integer
+      total_tokens:
+        type: integer
+    type: object
+  api_model.Message:
+    properties:
+      content:
+        type: string
+      role:
+        type: string
+    type: object
+  api_model.ReqChat:
+    properties:
+      messages:
+        items:
+          $ref: '#/definitions/api_model.Message'
+        type: array
+      stream:
+        type: boolean
+    type: object
+  api_model.RespChat:
+    properties:
+      choices:
+        items:
+          $ref: '#/definitions/api_model.RespChatChoice'
+        type: array
+      created_at:
+        type: integer
+      id:
+        type: string
+      model:
+        type: string
+      object:
+        type: string
+      usage:
+        $ref: '#/definitions/api_model.ChatUsage'
+    type: object
+  api_model.RespChatChoice:
+    properties:
+      delta:
+        $ref: '#/definitions/api_model.Message'
+      finish_reason:
+        type: string
+      index:
+        type: integer
+      message:
+        $ref: '#/definitions/api_model.Message'
+    type: object
+host: localhost:3003
+info:
+  contact: {}
+  description: 這是 UMC GPT 的 API 文件，所有的 API 都會在這裡顯示。使用者可以在這裡測試 API。
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: UMC GPT API
+  version: "1.0"
+paths:
+  /api/chat:
+    post:
+      consumes:
+      - application/json
+      description: |-
+        接收到問題後，加入特定的 Header 以及格式，然後傳給 ChatGPT 進行回答。
+        最後再轉成 JSON 格式回傳。
+      parameters:
+      - description: 問題
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/api_model.ReqChat'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 答案
+          schema:
+            $ref: '#/definitions/api_model.RespChat'
+      summary: 把問題傳給 ChatGPT 並取得回答
+      tags:
+      - api
+  /api/images/generations:
+    post:
+      description: |-
+        接收到問題後，加入特定的 Header 以及格式，然後傳給 ChatGPT 進行回答。
+        最後再轉成 JSON 格式回傳。
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 答案
+          schema:
+            $ref: '#/definitions/api_model.RespChat'
+      summary: 把問題傳給 ChatGPT 並取得回答
+      tags:
+      - api
+swagger: "2.0"

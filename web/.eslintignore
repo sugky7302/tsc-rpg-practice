@@ -1,0 +1,6 @@
+dist
+**/assets/**/*
+jest.config.js
+fixtures
+coverage
+__snapshots__

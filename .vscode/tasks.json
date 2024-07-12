@@ -1,15 +1,50 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"label": "start:watch",
-			"type": "shell",
-            "command": "pnpm start:watch"
-		},
-		{
-			"type": "shell",
-            "label": "start:run",
-            "command": "pnpm start:run",
-		}
-	]
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build dev",
+            "type": "shell",
+            "command": "docker-compose up -d --build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [],
+            "options": {
+                "statusbar": {
+                    "label": "$(beaker)建構容器"
+                }
+            }
+        },
+        {
+            "label": "run",
+            "type": "shell",
+            "command": "docker-compose up -d",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [],
+            "options": {
+                "statusbar": {
+                    "label": "$(debug-start)啟動容器"
+                }
+            }
+        },
+        {
+            "label": "down",
+            "type": "shell",
+            "command": "docker-compose down --remove-orphans", 
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [],
+            "options": {
+                "statusbar": {
+                    "label": "$(debug-pause)終止容器"
+                }
+            }
+        }
+    ]
 }

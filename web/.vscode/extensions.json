@@ -1,0 +1,10 @@
+{
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=827846
+  "recommendations": [
+    "angular.ng-template",
+    "csstools.postcss",
+    "esbenp.prettier-vscode",
+    "rvest.vs-code-prettier-eslint",
+    "actboy168.tasks"
+  ]
+}

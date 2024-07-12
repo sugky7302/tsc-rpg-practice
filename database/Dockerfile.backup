@@ -1,0 +1,17 @@
+# 版本必須和 postgresql 一致
+FROM postgres:17beta2
+
+RUN apt update && \
+    apt install -y cron && \
+    apt clean && rm -rf /var/lib/apt/lists/*
+
+ADD backup-dump.sh /dump.sh
+RUN chmod +x /dump.sh
+
+ADD backup-start.sh /start.sh
+RUN chmod +x /start.sh
+
+VOLUME /dump
+
+ENTRYPOINT ["/start.sh"]
+CMD [""]

@@ -1,0 +1,67 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "test",
+            "type": "shell",
+            "command": "go test -v ./...",
+            "options": {
+                "statusbar": {
+                    "label": "$(debug)測試"
+                }
+            }
+        },
+        {
+            "label": "run",
+            "type": "shell",
+            "command": "go run /app/main.go",
+            "options": {
+                "statusbar": {
+                    "label": "$(debug-start)執行"
+                }
+            }
+        },
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "go build -o /app/bin/app /app/main.go",
+            "options": {
+                "statusbar": {
+                    "label": "$(beaker)編譯"
+                }
+            }
+        },
+        {
+            "label": "build(win)",
+            "type": "shell",
+            "command": "CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o /app/bin/app.exe /app/main.go",
+            "options": {
+                "statusbar": {
+                    "label": "$(beaker)編譯 Win"
+                }
+            }
+        },
+        {
+            "label": "build(win)",
+            "type": "shell",
+            "command": "CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /app/bin/app /app/main.go",
+            "options": {
+                "statusbar": {
+                    "label": "$(beaker)編譯 Linux"
+                }
+            }
+        },
+        {
+            "label": "swag",
+            "type": "shell",
+            "command": "cd /app && swag init",
+            "options": {
+                "statusbar": {
+                    "label": "Swagger"
+                }
+            }
+        },
+    ]
+}
