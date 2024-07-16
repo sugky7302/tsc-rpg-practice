@@ -5,6 +5,7 @@
     "csstools.postcss",
     "esbenp.prettier-vscode",
     "rvest.vs-code-prettier-eslint",
-    "actboy168.tasks"
+    "actboy168.tasks",
+    "ritwickdey.liveserver"
   ]
 }

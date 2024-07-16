@@ -7,7 +7,7 @@
     "build": "npx postcss src/styles.css > src/styles.min.css && ng build && rm src/styles.min.css",
     "watch": "ng build --watch --configuration development",
     "lint": "npx eslint . --fix",
-    "test": "ng test"
+    "test": "pnpm exec playwright test"
   },
   "private": true,
   "dependencies": {
@@ -27,6 +27,8 @@
     "@angular/cli": "^18.0.4",
     "@angular/compiler-cli": "^18.0.0",
     "@fullhuman/postcss-purgecss": "^6.0.0",
+    "@playwright/test": "^1.45.2",
+    "@types/node": "^20.14.10",
     "autoprefixer": "^10.4.19",
     "cssnano": "^7.0.2",
     "eslint": "^9.5.0",
