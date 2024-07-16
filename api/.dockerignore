@@ -1,3 +1,5 @@
 Dockerfile*
 .dockerignore
+.gitignore
 tmp/
+log/
