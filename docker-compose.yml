@@ -73,8 +73,11 @@ services:
     networks:
       war3-net:
         ipv4_address: 172.210.0.4
+    ports:
+      - 4200:4200
     volumes:
       - ./web/src:/app/src
+      - ./web/tests:/app/tests
       - ./web/public:/app/public
       - ./web/.vscode:/app/.vscode
 

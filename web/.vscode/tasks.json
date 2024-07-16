@@ -2,41 +2,79 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?LinkId=733558
   "version": "2.0.0",
   "tasks": [
-    {
-      "type": "npm",
-      "script": "start",
-      "isBackground": true,
-      "problemMatcher": {
-        "owner": "typescript",
-        "pattern": "$tsc",
-        "background": {
-          "activeOnStart": true,
-          "beginsPattern": {
-            "regexp": "(.*?)"
+      {
+          "type": "npm",
+          "script": "start",
+          "isBackground": true,
+          "problemMatcher": {
+              "owner": "typescript",
+              "pattern": "$tsc",
+              "background": {
+                  "activeOnStart": true,
+                  "beginsPattern": {
+                      "regexp": "(.*?)"
+                  },
+                  "endsPattern": {
+                      "regexp": "bundle generation complete"
+                  }
+              }
           },
-          "endsPattern": {
-            "regexp": "bundle generation complete"
+          "options": {
+              "statusbar": {
+                  "label": "$(debug-start)啟動",
+              }
           }
-        }
-      }
-    },
-    {
-      "type": "npm",
-      "script": "test",
-      "isBackground": true,
-      "problemMatcher": {
-        "owner": "typescript",
-        "pattern": "$tsc",
-        "background": {
-          "activeOnStart": true,
-          "beginsPattern": {
-            "regexp": "(.*?)"
-          },
-          "endsPattern": {
-            "regexp": "bundle generation complete"
+      },
+      {
+          "label": "生成組件",
+          "type": "shell",
+          "command": "ng generate component ${input:component_path} --skip-import --skip-tests",
+          "problemMatcher": [],
+          "options": {
+              "statusbar": {
+                  "label": "$(add)組件",
+              }
           }
-        }
+      },
+      {
+          "label": "生成服務",
+          "type": "shell",
+          "command": "ng generate service ${input:component_path} --skip-tests",
+          "problemMatcher": [],
+          "options": {
+              "statusbar": {
+                  "label": "$(add)服務",
+              }
+          }
+      },
+      {
+          "label": "生成裝飾器",
+          "type": "shell",
+          "command": "ng generate directive ${input:component_path} --skip-tests",
+          "problemMatcher": [],
+          "options": {
+              "statusbar": {
+                  "label": "$(add)裝飾器",
+              }
+          }
+      },
+      {
+          "label": "生成管道",
+          "type": "shell",
+          "command": "ng generate pipe ${input:component_path} --skip-tests",
+          "problemMatcher": [],
+          "options": {
+              "statusbar": {
+                  "label": "$(add)管道",
+              }
+          }
+      },
+  ],
+  "inputs": [
+      {
+          "id": "component_path", // 輸入參數的 id，要與 args 中的 ${input:component_path} 一致
+          "type": "promptString",
+          "description": "請輸入放置路徑",
       }
-    }
-  ]
+  ],
 }

@@ -1,0 +1,35 @@
+/*
+ * Viewport
+ */
+.full-screen {
+    width: 100dvw;
+    height: 100dvh;
+}
+
+/*
+ * flex
+ */
+.flex__center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*
+ * Direction
+ */
+.flex__col {
+    flex-direction: column;
+}
+
+.flex__row {
+    flex-direction: row;
+}
+
+.flex__row-reverse {
+    flex-direction: row-reverse;
+}
+
+.flex__col-reverse {
+    flex-direction: column-reverse;
+}
