@@ -1,4 +1,4 @@
-name: Playwright Tests
+name: Test Web With Playwright
 on:
   push:
     branches: [ main, master ]
@@ -14,11 +14,11 @@ jobs:
       with:
         node-version: 18
     - name: Install dependencies
-      run: npm install -g pnpm && pnpm install
+      run: npm install -g pnpm && cd web && pnpm install
     - name: Install Playwright Browsers
-      run: pnpm exec playwright install --with-deps
+      run: cd web && pnpm exec playwright install --with-deps
     - name: Run Playwright tests
-      run: pnpm exec playwright test
+      run: cd web && pnpm exec playwright test
     - uses: actions/upload-artifact@v3
       if: always()
       with:
