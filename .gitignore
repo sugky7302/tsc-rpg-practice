@@ -1,3 +1,4 @@
 # 第三方套件
 node_modules
 .pnpm-store
+log/
