@@ -6,6 +6,7 @@
     "esbenp.prettier-vscode",
     "rvest.vs-code-prettier-eslint",
     "actboy168.tasks",
-    "ritwickdey.liveserver"
+    "ritwickdey.liveserver",
+    "dbaeumer.vscode-eslint"
   ]
 }
