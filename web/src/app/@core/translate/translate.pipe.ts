@@ -1,8 +1,8 @@
-import { Pipe, PipeTransform } from "@angular/core";
-import { TranslateService } from "./translate.service";
+import { Pipe, PipeTransform } from '@angular/core';
+import { TranslateService } from './translate.service';
 
 @Pipe({
-    name: "translate",
+    name: 'c18n',
     standalone: true,
     // 如果設定成 pure，只有 input 改變時才會觸發 pipe。
     // 如果設定成 impure，只要有任何改變時就會觸發 pipe。

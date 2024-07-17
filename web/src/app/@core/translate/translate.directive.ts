@@ -20,6 +20,7 @@ export class TranslateDirective implements OnInit {
     // 所以要在 ngOnInit 執行。
     // 使用 textContent 而不是 innerHTML 是因為 innerHTML 會將元素的內容轉成 HTML，這樣會有安全性問題。
     private _transform() {
+        if (!this.el.nativeElement.textContent) return;
         this.el.nativeElement.textContent = this._srv.instant(this.el.nativeElement.textContent);
     }
 }
