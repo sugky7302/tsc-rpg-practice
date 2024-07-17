@@ -5,11 +5,11 @@
     --card__shadow-4: 0 0 0.2rem rgb(0 0 0 / 10%), 0 0.2rem 0.4rem rgb(0 0 0 / 20%);
     --card__shadow-5: 0 0 10px rgba(0, 0, 0, 0.3);
     --card--round: 0.5rem;
-    --card--padding: 0.5rem;
+    --card__padding: 0.5rem;
 }
 
 .card {
-    padding: var(--card--padding);
+    padding: var(--card__padding);
     border-radius: var(--card--round);
     -webkit-border-radius: var(--card--round);
     -moz-border-radius: var(--card--round);
