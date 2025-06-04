@@ -3,9 +3,9 @@
 ##########################################
 # 全域變數
 ##########################################
-ARG NODE_VERSION=22 \
-    ANGULAR_VERSION=18.1.0 \
-    PNPM_VERSION=9 \
+ARG NODE_VERSION=24 \
+    ANGULAR_VERSION=20.0.0 \
+    PNPM_VERSION=10 \
     NGINX_VERSION=1.27 \
     ALPINE_VERSION=3.17.0 \
     PNPM_DIR="/usr/local/lib/node_modules/pnpm"

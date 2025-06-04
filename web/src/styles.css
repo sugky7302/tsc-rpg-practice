@@ -1,10 +1,1 @@
-@import "./styles/base/_reset.css";
-@import "./styles/base/_font.css";
-@import "./styles/base/_grid.css";
-@import "./styles/component/card.css";
-
-body {
-    width: 100%;
-    min-height: 100%;
-    box-sizing: inherit;
-}
+/* You can add global styles to this file, and also import other style files */

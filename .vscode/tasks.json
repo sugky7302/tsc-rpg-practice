@@ -4,7 +4,7 @@
         {
             "label": "build dev",
             "type": "shell",
-            "command": "docker-compose up -d --build",
+            "command": "docker compose up -d --build",
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -19,7 +19,7 @@
         {
             "label": "run",
             "type": "shell",
-            "command": "docker-compose up -d",
+            "command": "docker compose up -d",
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -34,7 +34,7 @@
         {
             "label": "down",
             "type": "shell",
-            "command": "docker-compose down --remove-orphans", 
+            "command": "docker compose down --remove-orphans", 
             "group": {
                 "kind": "build",
                 "isDefault": true

@@ -1,4 +1,4 @@
-FROM postgres:17beta2
+FROM postgres:17
 
 # 這個資料夾會在啟動時被執行，postgres 會自動執行裡面的 sql 檔案
 WORKDIR /docker-entrypoint-initdb.d

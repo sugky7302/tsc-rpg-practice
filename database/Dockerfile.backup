@@ -1,5 +1,5 @@
 # 版本必須和 postgresql 一致
-FROM postgres:17beta2
+FROM postgres:17
 
 RUN apt update && \
     apt install -y cron && \

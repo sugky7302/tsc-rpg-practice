@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "app": {
+    "app2": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -11,12 +11,9 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/app",
-            "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [],
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
@@ -26,8 +23,7 @@
             ],
             "styles": [
               "src/styles.css"
-            ],
-            "scripts": []
+            ]
           },
           "configurations": {
             "production": {
@@ -39,8 +35,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kB",
-                  "maximumError": "4kB"
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
                 }
               ],
               "outputHashing": "all"
@@ -54,13 +50,13 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "app:build:production"
+              "buildTarget": "app2:build:production"
             },
             "development": {
-              "buildTarget": "app:build:development"
+              "buildTarget": "app2:build:development"
             }
           },
           "defaultConfiguration": "development"

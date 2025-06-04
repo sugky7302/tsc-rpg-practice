@@ -1,4 +1,4 @@
-name: "war3"
+name: "tct"
 
 x-timezone:
   TZ: &zone Asia/Taipei
@@ -18,14 +18,14 @@ x-postgres-dsn: &pg_dsn
 
 services:
   database:
-    container_name: war3.db
+    container_name: tct.db
     build:
       context: ./database
       dockerfile: Dockerfile.run
     restart: always
     init: true
     networks:
-      war3-net:
+      tct-net:
         ipv4_address: 172.210.0.2
     ports:
       - published: 13789
@@ -38,7 +38,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
   api:
-    container_name: war3.api
+    container_name: tct.api
     build:
       context: ./api
       target: dev
@@ -47,7 +47,7 @@ services:
     depends_on:
       - database
     networks:
-      war3-net:
+      tct-net:
         ipv4_address: 172.210.0.3
     ports:
       - published: 13800
@@ -63,15 +63,15 @@ services:
       - ./api:/app
 
   web:
-    container_name: war3.web
+    container_name: tct.web
     build:
       context: ./web
-      target: dev
+      target: init
     depends_on:
       - api
     init: true
     networks:
-      war3-net:
+      tct-net:
         ipv4_address: 172.210.0.4
     ports:
       - 4200:4200
@@ -85,7 +85,7 @@ volumes:
   postgres_data:
 
 networks:
-  war3-net:
+  tct-net:
     driver: bridge
     ipam:
       driver: default
