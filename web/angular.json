@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "app2": {
+    "app": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -11,9 +11,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular/build:application",
+          "builder": "@angular-devkit/build-angular:browser-esbuild",
           "options": {
-            "browser": "src/main.ts",
+            "outputPath": "dist/app",
+            "index": "src/index.html",
+            "main": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
@@ -50,13 +52,13 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular/build:dev-server",
+          "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "app2:build:production"
+              "buildTarget": "app:build:production"
             },
             "development": {
-              "buildTarget": "app2:build:development"
+              "buildTarget": "app:build:development"
             }
           },
           "defaultConfiguration": "development"
