@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --host 0.0.0.0",
+    "start": "node log dev & ng serve --host 0.0.0.0",
     "build": "npx postcss src/styles.css > src/styles.min.css && ng build && rm src/styles.min.css",
     "watch": "ng build --watch --configuration development",
-    "lint": "npx eslint . --fix"
+    "lint": "eslint . --fix",
+    "format": "prettier --write \"src/**/*.{ts,js,json,css,scss,html}\""
   },
   "private": true,
   "dependencies": {
@@ -16,17 +17,24 @@
     "@angular/forms": "^20.0.0",
     "@angular/platform-browser": "^20.0.0",
     "@angular/router": "^20.0.0",
+    "phaser": "^3.90.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^20.0.0",
+    "@angular-eslint/eslint-plugin": "^19.7.1",
+    "@angular-eslint/eslint-plugin-template": "^19.7.1",
     "@angular/build": "^20.0.0",
     "@angular/cli": "^20.0.0",
     "@angular/compiler-cli": "^20.0.0",
     "@types/node": "^22.15.29",
+    "@typescript-eslint/eslint-plugin": "^8.33.1",
     "autoprefixer": "^10.4.21",
     "cssnano": "^7.0.7",
+    "eslint": "^9.28.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.4.1",
     "postcss": "^8.5.4",
     "postcss-cli": "^11.0.1",
     "postcss-import": "^16.1.0",
@@ -34,6 +42,7 @@
     "postcss-nested": "^7.0.2",
     "postcss-preset-env": "^10.2.0",
     "postcss-simple-vars": "^7.0.1",
+    "prettier": "^3.5.3",
     "typescript": "~5.8.2"
   }
 }

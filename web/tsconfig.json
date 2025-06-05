@@ -4,6 +4,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "strict": true,
+    "allowUnreachableCode": false,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
@@ -13,7 +14,29 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "ES2022",
-    "module": "preserve"
+    "module": "preserve",
+    "outDir": "./out-tsc/app",
+    "types": [
+      "node"
+    ],
+    "baseUrl": "./src",
+    "paths": {
+      "@pages/*": [
+        "app/pages/*"
+      ],
+      "@features/*": [
+        "app/features/*"
+      ],
+      "@components/*": [
+        "app/components/*"
+      ],
+      "@core/*": [
+        "app/core/*"
+      ],
+      "@game/*": [
+        "game/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
@@ -22,10 +45,10 @@
     "typeCheckHostBindings": true,
     "strictTemplates": true
   },
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.app.json"
-    }
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "src/**/*.spec.ts"
   ]
 }
