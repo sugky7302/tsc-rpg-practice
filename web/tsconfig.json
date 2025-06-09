@@ -13,6 +13,8 @@
     "isolatedModules": true,
     "experimentalDecorators": true,
     "importHelpers": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
     "target": "ES2022",
     "module": "preserve",
     "outDir": "./out-tsc/app",
@@ -24,17 +26,14 @@
       "@pages/*": [
         "app/pages/*"
       ],
-      "@features/*": [
-        "app/features/*"
-      ],
       "@components/*": [
         "app/components/*"
       ],
       "@core/*": [
         "app/core/*"
       ],
-      "@game/*": [
-        "game/*"
+      "@styles/*": [
+        "app/styles/*"
       ]
     }
   },

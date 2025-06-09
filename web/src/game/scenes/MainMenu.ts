@@ -1,6 +1,6 @@
 import { GameObjects, Scene } from 'phaser';
 
-import { EventBus } from '../EventBus';
+import { EventQueue } from '../event-queue';
 
 export class MainMenu extends Scene {
     background!: GameObjects.Image;
@@ -29,7 +29,7 @@ export class MainMenu extends Scene {
             .setOrigin(0.5)
             .setDepth(100);
 
-        EventBus.emit('current-scene-ready', this);
+        EventQueue.emit('current-scene-ready', this);
     }
 
     changeScene() {

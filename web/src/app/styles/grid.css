@@ -1,0 +1,15 @@
+/* 定位布局 */
+.display__screen-center {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 容器內部排序 */
+.flex__column-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

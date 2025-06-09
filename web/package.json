@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node log dev & ng serve --host 0.0.0.0",
+    "start": "ng serve --host 0.0.0.0",
     "build": "npx postcss src/styles.css > src/styles.min.css && ng build && rm src/styles.min.css",
     "watch": "ng build --watch --configuration development",
     "lint": "eslint . --fix",
