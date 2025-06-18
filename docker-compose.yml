@@ -6,7 +6,7 @@ x-timezone:
 
 x-gin:
   GIN_MODE: &gin_mode release
-  GIN_PORT: &gin_port 3003
+  GIN_PORT: &gin_port 5566
   GIN_THREAD: &gin_thread 4
 
 x-postgres-dsn: &pg_dsn
