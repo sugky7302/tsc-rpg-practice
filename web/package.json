@@ -7,7 +7,8 @@
     "build": "npx postcss src/styles.css > src/styles.min.css && ng build && rm src/styles.min.css",
     "watch": "ng build --watch --configuration development",
     "lint": "eslint . --fix",
-    "format": "prettier --write \"src/**/*.{ts,js,json,css,scss,html}\""
+    "format": "prettier --write \"src/**/*.{ts,js,json,css,scss,html}\"",
+    "test": "pnpm exec playwright test"
   },
   "private": true,
   "dependencies": {
@@ -28,6 +29,7 @@
     "@angular/build": "^20.0.0",
     "@angular/cli": "^20.0.0",
     "@angular/compiler-cli": "^20.0.0",
+    "@playwright/test": "^1.53.1",
     "@types/node": "^22.15.29",
     "@typescript-eslint/eslint-plugin": "^8.33.1",
     "autoprefixer": "^10.4.21",

@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "outDir": "./out-tsc/spec",
+    "types": [
+      "node",
+      "playwright"
+    ],
+    "module": "commonjs",
+    "target": "ES2022",
+    "esModuleInterop": true,
+    "allowJs": true
+  },
+  "include": [
+    "tests/**/*.ts"
+  ]
+}
